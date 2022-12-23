@@ -83,6 +83,7 @@ public Action Timer_CheckSmokes(Handle timer)
         return Plugin_Continue;
     }
 
+    float time = GetGameTime();
     float current_pos[3];
     int i;
     for (i = 0; i < MAX_SMOKES; ++i)
@@ -100,7 +101,7 @@ public Action Timer_CheckSmokes(Handle timer)
                 g_smokes_prevPos[i] = NULL_VECTOR;
                 g_smokes[i] = INVALID_ENT_REFERENCE;
                 g_healspots[g_healspots_head] = current_pos;
-                g_healspots_startTime[g_healspots_head] = GetGameTime();
+                g_healspots_startTime[g_healspots_head] = time;
                 g_healspots_head = (g_healspots_head + 1) % MAX_SMOKES;
                 continue;
             }
@@ -112,7 +113,6 @@ public Action Timer_CheckSmokes(Handle timer)
     float regen = g_cvSupportRegen.FloatValue;
     float speed = g_cvSupportRegenSpeed.FloatValue;
     float cooldown = g_cvSupportRegenCooldown.FloatValue;
-    float time = GetGameTime();
     float delta_time, distance;
 
     for (i = 0; i < MAX_SMOKES; ++i)
@@ -148,7 +148,7 @@ public Action Timer_CheckSmokes(Handle timer)
             if (distance <= SMOKE_RADIUS * SMOKE_RADIUS)
             {
                 if (g_fPlayerHealth[client] <= regen &&
-                    g_fLastDamage[client] + cooldown < GetGameTime())
+                    g_fLastDamage[client] + cooldown < time)
                 {
                     g_fPlayerHealth[client] += speed * MY_TIMER_INTERVAL;
                     SetEntityHealth(client, RoundToFloor(g_fPlayerHealth[client]));
