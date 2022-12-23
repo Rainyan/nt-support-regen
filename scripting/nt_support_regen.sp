@@ -78,7 +78,7 @@ public void OnPluginStart()
 
 public Action Timer_CheckSmokes(Handle timer)
 {
-    if (g_cvRegenStyle.IntValue != REGEN_STYLE_SUPPORT_SELFHEAL)
+    if (g_cvRegenStyle.IntValue != REGEN_STYLE_SMOKE_HEAL)
     {
         return Plugin_Continue;
     }
