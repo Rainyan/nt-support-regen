@@ -118,8 +118,6 @@ public Action Timer_CheckSmokes(Handle timer)
     for (i = 0; i < MAX_SMOKES; ++i)
     {
         // Using NULL_VECTOR as special value to mean "inactive array index" here.
-        // Not using IsNullVector(), because we don't init this array as NULL_VECTOR,
-        // but its initial zeroed state happens to equal NULL_VECTOR.
         if (VectorsEqual(g_healspots[i], NULL_VECTOR))
         {
             continue;
