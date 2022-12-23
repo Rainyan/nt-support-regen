@@ -95,7 +95,7 @@ public Action Timer_CheckSmokes(Handle timer)
 
         if (!VectorsEqual(current_pos, NULL_VECTOR))
         {
-            if (VectorsEqual(current_pos, g_smokes_prevPos[i], 0.1))
+            if (VectorsEqual(current_pos, g_smokes_prevPos[i], MY_TIMER_INTERVAL))
             {
                 g_smokes_prevPos[i] = NULL_VECTOR;
                 g_smokes[i] = INVALID_ENT_REFERENCE;
