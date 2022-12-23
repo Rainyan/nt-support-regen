@@ -96,6 +96,8 @@ public Action Timer_CheckSmokes(Handle timer)
 
         if (!VectorsEqual(current_pos, NULL_VECTOR))
         {
+            // TODO: how does this deal with the bugged rattling smokes that never settle?
+            // perhaps should compare for exactly equals to prevent false trigger for those.
             if (VectorsEqual(current_pos, g_smokes_prevPos[i], MY_TIMER_INTERVAL))
             {
                 g_smokes_prevPos[i] = NULL_VECTOR;
