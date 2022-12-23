@@ -9,7 +9,6 @@
 #define NEO_MAX_PLAYERS 32
 
 #define MAX_SMOKES (NEO_MAX_PLAYERS * 2)
-#assert MAX_SMOKES != 0 // because we divide by it
 
 // TODO: These two durations times are eyeballed, for now; should get accurate measurements.
 //
@@ -179,11 +178,13 @@ void TrackSmoke(int entref)
 stock bool VectorsEqual(const float v1[3], const float v2[3], const float max_ulps = 0.0)
 {
     // Needs to exactly equal.
-    if (max_ulps == 0) {
+    if (max_ulps == 0)
+    {
         return v1[0] == v2[0] && v1[1] == v2[1] && v1[2] == v2[2];
     }
     // Allow an inaccuracy of size max_ulps.
-    else {
+    else
+    {
         if (FloatAbs(v1[0] - v2[0]) > max_ulps) { return false; }
         if (FloatAbs(v1[1] - v2[1]) > max_ulps) { return false; }
         if (FloatAbs(v1[2] - v2[2]) > max_ulps) { return false; }
